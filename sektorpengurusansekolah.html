@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sektor Pengurusan Sekolah</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+    <!-- Footer at the top -->
+    <div class="footer">
+        <p>DATA DAN MAKLUMAT ADALAH SULIT</p>
+    </div>
+
+    <!-- Hamburger Icon (appears on mobile) -->
+    <div class="hamburger">
+        <img src="image/hamburger.png" alt="Hamburger Menu">
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <!-- PPD Logo -->
+            <div class="logo-container">
+                <img src="image/logoppd.png" alt="PPD Logo">
+            </div>
+
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="profil.html">Profil PPD</a></li>
+                <li><a href="egerak.html">eGERAK</a></li>
+                <li><a href="pegawaippd.html">Pegawai PPD Lipis</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <h1>Sektor Pengurusan Sekolah</h1>
+
+
+
+            <h2>Data E-Operasi Rendah</h2>
+            <!-- Embed Google Slides Presentation for Data E-Operasi Rendah -->
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTJ4WUzNGG1RqcuO7cDL8NdWk4grbw2wBATSNzGTDdSEeJEgnKFHimIYtdSASCcfQ/embed?start=false&loop=false&delayms=3000" 
+                    frameborder="0" 
+                    width="480" 
+                    height="270" 
+                    allowfullscreen="true" 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+            </iframe>
+			
+			            <!-- New Data E-Operasi Menengah section -->
+            <h2>Data E-Operasi Menengah</h2>
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQfWDeZoPv6-xxN7A9dEvpSHnVWTHtgBU2B-DCg1XpiV2OQAeGfhvMAShuePJENzg/embed?start=false&loop=false&delayms=3000" 
+                    frameborder="0" 
+                    width="480" 
+                    height="270" 
+                    allowfullscreen="true" 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+            </iframe>
+			
+			            <h2>Data PraSekolah</h2>
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQNkSnSbzpANERuwlbx-n3Z-KYAimxigGFZC4SPObekz0b447r1eMiw37tbRwYZkw/embed?start=false&loop=false&delayms=3000" 
+                    frameborder="0" 
+                    width="480" 
+                    height="270" 
+                    allowfullscreen="true" 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+            </iframe>
+			
+			            <!-- Data Pendidikan Swasta section -->
+            <h2>Data Pendidikan Swasta</h2>
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRJbgUQ2AfY4k_SHndh87P3vWhPfhj5S5iLTv3Dd39-oehU00gDkkdV2j8aAtI0YA/embed?start=false&loop=false&delayms=3000" 
+                    frameborder="0" 
+                    width="480" 
+                    height="270" 
+                    allowfullscreen="true" 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+            </iframe
+			
+			            <!-- SiPartners+ section -->
+            <h2>SiPartners+</h2>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToUtEb5uP0vk6dhq2wm91JcWe1fdr-NMkQIwmtyLRlTqvl8_65k8vTkyQs09g_JQ/pubhtml?widget=true&amp;headers=false" 
+                    frameborder="0" 
+                    width="100%" 
+                    height="600px" 
+                    allowfullscreen="true" 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+            </iframe>
+
+
+
+        </main>
+    </div>
+
+    <script>
+        // Get the hamburger icon and the sidebar
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+
+        // Add an event listener for when the hamburger is clicked
+        hamburger.addEventListener('click', function() {
+            // Toggle the 'visible' class on the sidebar
+            sidebar.classList.toggle('visible');
+        });
+
+        // Handle window resizing to reset the sidebar visibility on desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                sidebar.classList.add('visible'); // Always visible on larger screens
+            } else {
+                sidebar.classList.remove('visible'); // Hidden by default on smaller screens
+            }
+        });
+    </script>
+</body>
+</html>

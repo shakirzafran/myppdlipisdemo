@@ -1,0 +1,727 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Footer styles */
+.footer {
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed; /* Fix the footer to the viewport */
+    top: 0; /* Position it at the bottom of the screen */
+    left: 0;
+    width: 100%; /* Ensure it spans the full width */
+    z-index: 90; /* Make sure it stays above all other content */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for separation */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer {
+        font-size: 0.9em; /* Adjust font size for smaller screens */
+        padding: 8px 0;   /* Slightly reduce padding */
+    }
+}
+
+
+/* Banner styles */
+.banner img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    position: relative;
+    z-index: 50; /* Ensure it's above content but below sidebar */
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    margin-top: 10px;
+    position: relative;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 100;
+}
+
+/* Sidebar visible state */
+.sidebar.visible {
+    display: block;
+}
+
+/* Sidebar hidden state for mobile */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: -200px; /* Start off-screen */
+        width: 200px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 100;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.visible {
+        display: block;
+    }
+
+    /* Adjustments for when the sidebar is visible */
+    .footer,
+    .content {
+        margin-left: 0; /* Push content to the right by the width of the sidebar */
+    }
+}
+
+/* When the sidebar is visible */
+    .sidebar.visible {
+        left: 0; /* Move the sidebar into view */
+    }
+
+    /* Adjust content when the sidebar is visible */
+    .content.shifted {
+        margin-left: 200px; /* Shift content right to accommodate the sidebar */
+    }
+
+/* Sidebar navigation styles */
+.sidebar ul {
+    list-style-type: none;
+    margin-top: 20px; /* Move the list a bit down */
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #444;
+}
+
+/* Logo container styling */
+.logo-container {
+    text-align: center; /* Center the logo */
+    margin-bottom: 20px; /* Add some space below the logo */
+}
+
+.logo-container img {
+    width: 150px; /* Set the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Block level for proper spacing */
+    margin: 0 auto; /* Center the image */
+}
+
+/* When the sidebar is visible, shift content */
+.content.shifted {
+    margin-left: 0; /* Shift content to the right */
+}
+
+
+/* Main content styles */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    margin-left: 200px; /* Space for sidebar on larger screens */
+    transition: margin-left 0.3s ease; /* Smooth transition */
+}
+
+/* Hamburger Icon */
+.hamburger {
+    display: none; /* Initially hidden on larger screens */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 110; /* Ensure it's above other elements */
+    cursor: pointer;
+}
+
+.hamburger img {
+    width: 25px;
+    height: auto;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    /* Display the hamburger icon */
+    .hamburger {
+        display: block;
+    }
+
+    /* Hide the sidebar initially */
+    .sidebar {
+        display: none;
+    }
+
+    /* Adjust main content margin */
+    .content {
+        margin-left: 0; /* No margin on mobile */
+        padding: 20px;
+    }
+
+    /* Adjust banner for smaller screens */
+    .banner img {
+        width: 100%;
+        max-height: 200px;
+    }
+
+    /* Adjust footer */
+    .footer {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    /* When the sidebar is visible, shift the footer, banner, and content */
+    .sidebar.visible + .content {
+        margin-left: 200px; /* Ensure the content shifts only by the sidebar's width */
+    }
+
+    .sidebar.visible + .footer {
+        margin-left: 200px; /* Shift the footer in sync with the content */
+    }
+
+    .content {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+}
+
+
+/* Card Grid Styles */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 columns */
+    gap: 20px; /* Space between cards */
+    margin-top: 20px;
+	
+}
+
+.card {
+    background-color: #004aad;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Hover effect */
+}
+
+.card img {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    object-fit: contain; /* Ensure the image fits inside the card */
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.2em;
+    color: #ffffff;
+}
+
+/* Responsive Styles for Tablets */
+@media screen and (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr); /* 2 columns on tablets */
+        gap: 15px; /* Reduce space between cards */
+    }
+
+    .card {
+        width: 100%; /* Full width on mobile */
+        padding: 12px; /* Slightly reduce padding */
+    }
+
+    .card img {
+        width: 70px; /* Smaller image size for tablets */
+        height: 70px;
+    }
+
+    .card h3 {
+        font-size: 1.0em; /* Slightly smaller font size for tablets */
+    }
+}
+
+/* Responsive Styles for Phones */
+@media screen and (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: 1fr; /* Single column on phones */
+        gap: 10px; /* Reduce space between cards */
+    }
+
+    .card {
+        padding: 8px; /* Smaller padding on phones */
+    }
+
+    .card img {
+        width: 50px; /* Even smaller image size for phones */
+        height: 50px;
+    }
+
+    .card h3 {
+        font-size: 0.9em; /* Smaller font size for phones */
+        margin-bottom: 8px; /* Reduced space between image and text */
+    }
+}
+
+
+/* Search Bar Styles */
+.search-container {
+    display: flex;
+    justify-content: center; /* Center the search bar */
+    margin-top: -20px; /* Adjust positioning if needed */
+    padding: 20px;
+}
+
+.search-container input {
+    width: 50%; /* 50% of the container width */
+    padding: 10px;
+    border-radius: 25px; /* Rounded corners */
+    border: 2px solid #ccc;
+    font-size: 1.1em;
+    opacity: 1.0; /* 50% transparency */
+    background-color: rgba(255, 255, 255, 0.5); /* Transparent white */
+    outline: none;
+    transition: opacity 0.3s ease;
+}
+
+.search-container input::placeholder {
+    color: #888; /* Placeholder text color */
+}
+
+.search-container input:hover,
+.search-container input:focus {
+    opacity: 1; /* Remove transparency on hover/focus */
+    background-color: white; /* Solid white background on focus */
+}
+
+/* Demografik Section Styling */
+.demografik-section {
+    margin-top: 40px; /* Add some spacing before the section */
+}
+
+.demografik-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333; /* Optional color change */
+}
+
+.demografik-section img {
+    width: 100%; /* Make the image responsive */
+    max-width: 500px; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure block display for proper spacing */
+    margin: 0 auto; /* Add margin for spacing around the image */
+    border: 3px solid #ccc; /* Add a light grey border */
+    border-radius: 10px; /* Optionally, add rounded corners */
+}
+
+.demografik-section p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555; /* Text color for readability */
+}
+
+/* Purata Jarak Sekolah Section Styling */
+.jarak-sekolah-section {
+    margin-top: 40px; /* Add some spacing before the section */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center the items vertically */
+}
+
+.jarak-sekolah-section h2 {
+    font-size: 24px; /* Font size for the title */
+    margin-right: 15px; /* Space between the title and the image */
+    color: #333; /* Optional color change */
+}
+
+.jarak-sekolah-section img {
+    width: 100px; /* Set a specific width for the map image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.special-card {
+    background-color: #D3D3D3; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    text-align: center; /* Center text */
+    padding: 20px; /* Padding around the content */
+    margin: 0 auto; /* Center the card horizontally */
+    width: 700px; /* Set a fixed width for the card */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+}
+
+.special-card img {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    object-fit: contain; /* Ensure the image fits inside the card */
+    margin-bottom: 15px; /* Space below the image */
+}
+
+.special-card h3 {
+    font-size: 1.5em; /* Larger font size for headings */
+    color: #333; /* Text color */
+}
+
+/* Responsive Styles for Special Cards */
+@media screen and (max-width: 768px) {
+    .special-card {
+        width: 100%; /* Full width on mobile */
+        padding: 15px; /* Slightly reduce padding */
+    }
+
+    .special-card img {
+        width: 80px; /* Smaller images on mobile */
+        height: 80px; /* Smaller images on mobile */
+    }
+
+    .special-card h3 {
+        font-size: 1.2em; /* Adjust font size on mobile */
+    }
+}
+
+/* Section Styling */
+.jarak-sekolah-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Container Styling */
+.kategori-label-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 10px;       /* Add spacing between cards */
+}
+
+/* Card Styling */
+.kategori-card, .label-card {
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    width: 300px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Image Styling */
+.kategori-card img, .label-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+/* Title Styling */
+.kategori-card h3, .label-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Dropdown Menu Styling */
+.kategori-card select, .label-card select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .kategori-label-container {
+        flex-wrap: nowrap;         /* Prevent wrapping on medium screens */
+        gap: 5px;                  /* Reduce gap between cards */
+    }
+
+    .kategori-card, .label-card {
+        width: calc(50% - 10px);  /* Make cards fit side-by-side */
+        margin: 5px;              /* Adjust margin for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .kategori-label-container {
+        flex-direction: column;    /* Stack cards vertically on very small screens */
+        gap: 10px;                 /* Restore gap for vertical stacking */
+    }
+
+    .kategori-card, .label-card {
+        width: 100%;               /* Full width for each card */
+        margin: 10px 0;            /* Add vertical spacing */
+    }
+}
+
+.sekolah-cards-container {
+    display: grid;                       /* Use grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Ensure three columns */
+    gap: 20px;                           /* Space between cards */
+    justify-items: center;               /* Center the cards horizontally */
+}
+
+@media screen and (max-width: 768px) {
+    .sekolah-cards-container {
+        grid-template-columns: repeat(3, minmax(100px, 1fr)); /* Adjust for smaller screens */
+        overflow-x: auto;               /* Enable horizontal scrolling if needed */
+    }
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+    .sekolah-card h3 {
+        font-size: 1.2em; /* Smaller font size for card titles on smaller screens */
+    }
+
+    .sekolah-card p {
+        font-size: 1em; /* Smaller font size for descriptions on smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sekolah-card h3 {
+        font-size: 1em; /* Even smaller font size for very small screens */
+    }
+
+    .sekolah-card p {
+        font-size: 0.9em; /* Further reduce font size for descriptions */
+    }
+}
+
+
+.sekolah-distribution-section {
+    text-align: center;      /* Center align all text in the section */
+    margin: 40px auto;       /* Add spacing above and below the section, center horizontally */
+    width: 100%;             /* Ensure full width for centering */
+}
+.sekolah-distribution-section h2 {
+    font-size: 2em;          /* Adjust font size for prominence */
+    color: #444;             /* Set a suitable color */
+    margin-bottom: 20px;     /* Add spacing below the heading */
+    text-align: center;      /* Explicitly center the heading text */
+}
+
+.sekolah-card {
+    background-color: #f0f0f0;          /* Light background color for the cards */
+    border-radius: 10px;                /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the cards */
+    text-align: center;                 /* Center content inside the card */
+    padding: 20px;                      /* Padding inside the card */
+    width: 90%;                         /* Cards adapt to container */
+    max-width: 300px;                   /* Max width for large screens */
+    height: auto;                       /* Flexible height */
+}
+
+.sekolah-card img {
+    width: 100%;                        /* Make images responsive */
+    height: auto;                       /* Keep image aspect ratio */
+    max-height: 150px;                  /* Limit image height */
+    margin-bottom: 15px;                /* Space below the image */
+}
+
+.sekolah-card h3 {
+    font-size: 1.4em; /* Default font size for the card titles */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.sekolah-card p {
+    font-size: 1.2em; /* Default font size for the description */
+    margin-top: 10px;
+    color: #333;
+}
+
+
+/* Styles for iframe in main content (smaller by default) */
+.iframe-container {
+    width: 400px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 300px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 200; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
+}
+
+/* Modal content iframe */
+.modal iframe {
+    margin: auto;
+    display: block;
+    max-width: 90%; /* Limit the width */
+    height: 600px; /* Fixed height for modal */
+}
+
+/* Close button for modal */
+.modal .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sector-title {
+    font-size: 1.5em;
+    color: #444;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.sector-container {
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+
+/* General styling for staff-grid */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center; /* Center cards within the grid */
+    margin-top: 20px;
+}
+
+.staff-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+	justify-items: center; /* Center cards within the grid */
+    transition: transform 0.3s;
+}
+.staff-card:hover {
+    transform: translateY(-5px); /* Hover effect */
+}
+/* Center the image within the card */
+.staff-card img {
+    width: 80px; /* Adjust as needed */
+    height: 120px; /* Adjust as needed */
+    object-fit: cover;
+    border-radius: 0; /* Rectangular shape */
+    margin: 0 auto; /* Center the image */
+    display: block; /* Ensure it behaves like a block element */
+}
+
+.staff-card h4 {
+    font-size: 1.1em;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Styling for Timbalan positions */
+.timbalan-grid {
+    display: flex;
+    justify-content: center; /* Centers the card horizontally */
+    margin-bottom: 20px; /* Space below the Timbalan card */
+}
+
+.timbalan-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    width: 200px; /* Fixed width to keep centered */
+}
+
+.timbalan-card:hover {
+    transform: translateY(-5px);
+}
+
+.timbalan-card img {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.timbalan-card h4 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+
+/* Responsive Design for Organizational Chart */
+@media screen and (max-width: 768px) {
+    .staff-grid {
+        grid-template-columns: repeat(3, 1fr); /* Adjust columns for tablets */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .staff-grid {
+        grid-template-columns: 1fr; /* Single column on phones */
+    }
+}

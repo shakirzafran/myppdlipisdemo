@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFIL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Footer at the top -->
+    <div class="footer">
+        <p>DATA DAN MAKLUMAT ADALAH SULIT</p>
+    </div>
+
+    <!-- Hamburger Icon (appears on mobile) -->
+    <div class="hamburger">
+        <img src="image/hamburger.png" alt="Hamburger Menu">
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <!-- PPD Logo -->
+            <div class="logo-container">
+                <img src="image/logoppd.png" alt="PPD Logo">
+            </div>
+
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#profil-ppd">Profil PPD</a></li>
+                <li><a href="egerak.html">eGERAK</a></li>
+                <li><a href="pegawaippd.html">Pegawai PPD Lipis</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <h1>Profil PPD Lipis</h1>
+
+            <!-- Small iframe container -->
+            <div class="iframe-container">
+                <iframe src="https://docs.google.com/presentation/d/1z6VjLtJwnXMFLubTgd6c3brLM7_9x-lg/embed" 
+                        width="400px" 
+                        height="300px" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        mozallowfullscreen="true" 
+                        webkitallowfullscreen="true"
+                        class="interactive-frame">
+                </iframe>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for pop-up presentation -->
+    <div id="presentationModal" class="modal">
+        <span class="close">&times;</span>
+        <iframe id="modalIframe" 
+        src="https://docs.google.com/presentation/d/1z6VjLtJwnXMFLubTgd6c3brLM7_9x-lg/embed" 
+        width="480" 
+        height="270" 
+        frameborder="0" 
+        allowfullscreen="true" 
+        mozallowfullscreen="true" 
+        webkitallowfullscreen="true">
+</iframe>
+
+    </div>
+
+    <script>
+	
+	    // Get the hamburger icon, sidebar, and card grid container
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
+    const cardGrid = document.querySelector('.card-grid');
+
+    // Add event listener for when the hamburger is clicked
+    hamburger.addEventListener('click', function() {
+        sidebar.classList.toggle('visible'); // Toggle sidebar visibility
+
+        // Toggle between 4x2 and 2x4 grid layout
+        if (sidebar.classList.contains('visible')) {
+            cardGrid.style.gridTemplateColumns = 'repeat(2, 1fr)'; // 2x4 layout when sidebar is visible
+        } else {
+            cardGrid.style.gridTemplateColumns = 'repeat(4, 1fr)'; // 4x2 layout when sidebar is hidden
+        }
+    });
+        // Modal functionality
+        const modal = document.getElementById('presentationModal');
+        const iframeContainer = document.querySelector('.iframe-container');
+        const closeBtn = document.querySelector('.close');
+        
+        // Show modal when iframe is clicked
+        iframeContainer.addEventListener('click', function() {
+            modal.style.display = 'block';
+        });
+
+        // Close modal when close button is clicked
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Close modal if user clicks outside the modal content
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

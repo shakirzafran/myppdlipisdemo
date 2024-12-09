@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sektor Psikologi</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+    <!-- Footer at the top -->
+    <div class="footer">
+        <p>DATA DAN MAKLUMAT ADALAH SULIT</p>
+    </div>
+
+    <!-- Hamburger Icon (appears on mobile) -->
+    <div class="hamburger">
+        <img src="image/hamburger.png" alt="Hamburger Menu">
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <!-- PPD Logo -->
+            <div class="logo-container">
+                <img src="image/logoppd.png" alt="PPD Logo">
+            </div>
+
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="profil.html">Profil PPD</a></li>
+                <li><a href="egerak.html">eGERAK</a></li>
+                <li><a href="pegawaippd.html">Pegawai PPD Lipis</a></li>
+
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <h1>Sektor Psikologi</h1>
+            <h2>TAKWIM PSIKOLOGI DAN KAUNSELING 2023</h2>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRMm5ZaR0eXbttW20r12vNkn388FCQ4Mhat54KQeHt8o5uaSc_R5hAWXOmlN0OVwg/pubhtml?widget=true&amp;headers=false" 
+        frameborder="0" 
+        width="480" 
+        height="270" 
+        allowfullscreen="true" 
+        mozallowfullscreen="true" 
+        webkitallowfullscreen="true">
+</iframe>
+
+        </main>
+    </div>
+
+    <script>
+        // Get the hamburger icon and the sidebar
+        const hamburger = document.querySelector('.hamburger');
+        const sidebar = document.querySelector('.sidebar');
+
+        // Add an event listener for when the hamburger is clicked
+        hamburger.addEventListener('click', function() {
+            // Toggle the 'visible' class on the sidebar
+            sidebar.classList.toggle('visible');
+        });
+
+        // Handle window resizing to reset the sidebar visibility on desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                sidebar.classList.add('visible'); // Always visible on larger screens
+            } else {
+                sidebar.classList.remove('visible'); // Hidden by default on smaller screens
+            }
+        });
+    </script>
+</body>
+</html>
